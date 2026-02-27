@@ -270,6 +270,7 @@ Gungon, Khalif (Back-End)
         if ($isMoneyInsufficient) {
             echo "<p style='color:red;'><strong>Warning: Your total Ang Pao is not enough to cover your expenses!</strong></p>";
         }
+        echo "</div>";
     }
     ?>
 </div>
