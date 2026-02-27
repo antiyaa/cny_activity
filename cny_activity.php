@@ -243,9 +243,10 @@ Gungon, Khalif (Back-End)
         // Check if total money is NOT enough for expenses
         $isMoneyInsufficient = $totalAngPao < $foodExpenses;
 
-        // Step 4: Display Results
+        echo "<div class='results'>";
         echo "<h2>Happy Chinese New Year, $username!</h2>";
         echo "Total Ang Pao: $totalAngPao <br>";
+        
         if ($remainingMoney <= 0) {
             echo "Remaining After Expenses: <span style='color:red;'><strong>$remainingMoney</strong></span><br>";
         } else {
