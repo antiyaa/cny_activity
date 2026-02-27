@@ -18,30 +18,131 @@ Gungon, Khalif (Back-End)
 
         body {
             min-height: 100vh;
-            background: linear-gradient(135deg, #8B0000, #b22222, #ff3c3c);
+            background: radial-gradient(circle at top, #b30000, #800000 70%);
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 40px;
+            overflow-x: hidden;
         }
 
-        /* Peach Main Container */
+.lantern {
+    position: absolute;
+    width: 90px;
+    height: 130px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: float 4s ease-in-out infinite;
+}
+
+/* Lantern Body */
+.lantern .body {
+    width: 90px;
+    height: 100px;
+    background: radial-gradient(circle at center, #ff3c3c 0%, #b30000 70%);
+    border-radius: 50% 50% 45% 45%;
+    position: relative;
+    box-shadow:
+        0 0 30px rgba(255,215,0,0.6),
+        inset 0 0 20px rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+
+/* Gold Ribs */
+.lantern .ribs {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        to right,
+        rgba(255,215,0,0.4) 0px,
+        rgba(255,215,0,0.4) 2px,
+        transparent 2px,
+        transparent 12px
+    );
+}
+
+/* Top & Bottom Caps */
+.lantern .cap {
+    width: 70px;
+    height: 15px;
+    background: linear-gradient(45deg, gold, #d4af37);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255,215,0,0.8);
+}
+
+.lantern .top {
+    margin-bottom: -5px;
+}
+
+.lantern .bottom {
+    margin-top: -5px;
+}
+
+/* Chinese Symbol */
+.lantern .symbol {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 35%;
+    font-size: 28px;
+    font-weight: bold;
+    color: gold;
+    text-shadow: 0 0 15px rgba(255,215,0,0.8);
+}
+
+/* Tassel */
+.lantern .tassel {
+    width: 4px;
+    height: 35px;
+    background: gold;
+    margin-top: -2px;
+    position: relative;
+}
+
+.lantern .tassel::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: -6px;
+    width: 16px;
+    height: 12px;
+    background: gold;
+    border-radius: 50%;
+}
+
+/* Positioning */
+.lantern-left {
+    top: 60px;
+    left: 100px;
+}
+
+.lantern-right {
+    top: 80px;
+    right: 120px;
+    animation-delay: 2s;
+}
+
+/* Floating Animation */
+@keyframes float {
+    0%,100% { transform: translateY(0px); }
+    50% { transform: translateY(-18px); }
+}
+
+        /* Main Container */
         .main-container {
-            width: 1000px;
+            width: 1050px;
             max-width: 95%;
             background: #f7c9a9;
             border-radius: 30px;
-            padding: 60px;
+            padding: 70px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.25);
-            animation: fadeIn 1s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+            position: relative;
+            border-top: 8px solid gold;
         }
 
         /* Left Section */
@@ -51,41 +152,51 @@ Gungon, Khalif (Back-End)
         }
 
         .left-section h1 {
-            font-size: 52px;
-            line-height: 1.2;
-            letter-spacing: 2px;
+            font-size: 55px;
+            line-height: 1.1;
+            letter-spacing: 3px;
         }
 
         .left-section span {
-            font-size: 72px;
+            font-size: 78px;
             font-weight: bold;
             display: block;
+            color: #b30000;
+            text-shadow: 0 0 15px rgba(255,215,0,0.7);
         }
 
         .left-section p {
-            margin-top: 20px;
-            font-size: 16px;
-            opacity: 0.8;
+            margin-top: 25px;
+            font-size: 17px;
+            opacity: 0.9;
         }
 
-        /* White Floating Card */
+        /* Angpao Form Card */
         .form-card {
-            width: 380px;
-            background: #ffffff;
-            padding: 35px;
-            border-radius: 25px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.25);
-            transition: transform 0.3s ease;
+            width: 420px;
+            background: linear-gradient(145deg, #ff1a1a, #b30000);
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+            border: 3px solid gold;
+            color: white;
+            position: relative;
         }
 
-        .form-card:hover {
-            transform: translateY(-5px);
+        .form-card::before {
+            content: "福";
+            position: absolute;
+            top: -30px;
+            right: 20px;
+            font-size: 60px;
+            color: gold;
+            text-shadow: 0 0 20px rgba(255,215,0,0.8);
         }
 
         label {
             font-size: 13px;
             font-weight: 600;
-            color: #7a0000;
+            color: #ffeaa7;
         }
 
         input[type="text"],
@@ -94,68 +205,50 @@ Gungon, Khalif (Back-End)
             padding: 12px 15px;
             margin: 8px 0 18px 0;
             border-radius: 30px;
-            border: 1px solid #ddd;
-            background: #f9f9f9;
+            border: none;
+            background: #fff;
             transition: 0.3s;
         }
 
         input:focus {
             outline: none;
-            border-color: #d10000;
-            box-shadow: 0 0 8px rgba(209,0,0,0.4);
-            background: #fff;
+            box-shadow: 0 0 10px gold;
         }
 
-        /* Modern Button */
+        /* Premium Gold Button */
         button {
             width: 100%;
-            padding: 12px;
+            padding: 14px;
             border-radius: 30px;
             border: none;
-            background: linear-gradient(45deg, #d10000, #ff3c3c);
-            color: white;
+            background: linear-gradient(45deg, gold, #ffd700);
+            color: #800000;
             font-weight: bold;
             cursor: pointer;
-            font-size: 15px;
-            position: relative;
-            overflow: hidden;
+            font-size: 16px;
             transition: 0.3s;
         }
 
         button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
-
-        /* Ripple effect */
-        button span {
-            position: absolute;
-            background: rgba(255,255,255,0.6);
-            border-radius: 50%;
-            transform: scale(0);
-            animation: ripple 0.6s linear;
-        }
-
-        @keyframes ripple {
-            to {
-                transform: scale(4);
-                opacity: 0;
-            }
+            box-shadow: 0 15px 30px rgba(255,215,0,0.5);
         }
 
         /* Results */
         .results {
-            margin-top: 20px;
-            padding: 18px;
-            background: #fff5ef;
-            border-radius: 18px;
+            margin-top: 25px;
+            padding: 20px;
+            background: #fff5e6;
+            border-radius: 20px;
             font-size: 14px;
             color: #7a0000;
-            animation: fadeIn 0.5s ease;
+            border-left: 5px solid gold;
+            animation: fadeIn 0.6s ease;
         }
 
         .results h2 {
             margin-bottom: 10px;
+            color: #b30000;
         }
 
         @media(max-width: 900px) {
@@ -171,6 +264,27 @@ Gungon, Khalif (Back-End)
     </style>
 </head>
 <body>
+
+<div class="lantern lantern-left">
+    <div class="cap top"></div>
+    <div class="body">
+        <div class="ribs"></div>
+        <div class="symbol">福</div>
+    </div>
+    <div class="cap bottom"></div>
+    <div class="tassel"></div>
+</div>
+
+<div class="lantern lantern-right">
+    <div class="cap top"></div>
+    <div class="body">
+        <div class="ribs"></div>
+        <div class="symbol">福</div>
+    </div>
+    <div class="cap bottom"></div>
+    <div class="tassel"></div>
+</div>
+    
 <div class="main-container">
     <div class="left-section">
         <h1>
@@ -277,23 +391,5 @@ Gungon, Khalif (Back-End)
 
 </div>
 
-<script>
-    // Ripple effect for button
-    const button = document.querySelector("button");
-
-    button.addEventListener("click", function (e) {
-        const circle = document.createElement("span");
-        const diameter = Math.max(this.clientWidth, this.clientHeight);
-        const radius = diameter / 2;
-
-        circle.style.width = circle.style.height = `${diameter}px`;
-        circle.style.left = `${e.clientX - this.offsetLeft - radius}px`;
-        circle.style.top = `${e.clientY - this.offsetTop - radius}px`;
-
-        this.appendChild(circle);
-
-        setTimeout(() => circle.remove(), 600);
-    });
-</script>
 </body>
 </html>
