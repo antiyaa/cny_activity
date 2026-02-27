@@ -1,7 +1,7 @@
 <!--
 Arellano, Lady Anthea (Front-End)
-Gicana, Daniela (Back-End)
-Gungon, Khalif (Business Analyst)
+Gicana, Daniela (Business Analyst)
+Gungon, Khalif (Back-End)
 -->
 <!DOCTYPE html>
 <html>
