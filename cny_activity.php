@@ -7,12 +7,181 @@ Gungon, Khalif (Back-End)
 <html>
 <head>
     <title>Chinese New Year - Activity</title>
-    <!-- Put yo' part here nogga -->
+    <!-- Arellano -->
     <style>
-        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #8B0000, #b22222, #ff3c3c);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        /* Peach Main Container */
+        .main-container {
+            width: 1000px;
+            max-width: 95%;
+            background: #f7c9a9;
+            border-radius: 30px;
+            padding: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Left Section */
+        .left-section {
+            width: 45%;
+            color: #7a0000;
+        }
+
+        .left-section h1 {
+            font-size: 52px;
+            line-height: 1.2;
+            letter-spacing: 2px;
+        }
+
+        .left-section span {
+            font-size: 72px;
+            font-weight: bold;
+            display: block;
+        }
+
+        .left-section p {
+            margin-top: 20px;
+            font-size: 16px;
+            opacity: 0.8;
+        }
+
+        /* White Floating Card */
+        .form-card {
+            width: 380px;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 25px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+            transition: transform 0.3s ease;
+        }
+
+        .form-card:hover {
+            transform: translateY(-5px);
+        }
+
+        label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #7a0000;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 12px 15px;
+            margin: 8px 0 18px 0;
+            border-radius: 30px;
+            border: 1px solid #ddd;
+            background: #f9f9f9;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #d10000;
+            box-shadow: 0 0 8px rgba(209,0,0,0.4);
+            background: #fff;
+        }
+
+        /* Modern Button */
+        button {
+            width: 100%;
+            padding: 12px;
+            border-radius: 30px;
+            border: none;
+            background: linear-gradient(45deg, #d10000, #ff3c3c);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 15px;
+            position: relative;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Ripple effect */
+        button span {
+            position: absolute;
+            background: rgba(255,255,255,0.6);
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+        }
+
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* Results */
+        .results {
+            margin-top: 20px;
+            padding: 18px;
+            background: #fff5ef;
+            border-radius: 18px;
+            font-size: 14px;
+            color: #7a0000;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .results h2 {
+            margin-bottom: 10px;
+        }
+
+        @media(max-width: 900px) {
+            .main-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .left-section {
+                width: 100%;
+                margin-bottom: 40px;
+            }
+        }
     </style>
 </head>
 <body>
+<div class="main-container">
+    <div class="left-section">
+        <h1>
+            HAPPY
+            <span>CHINESE</span>
+            NEW YEAR
+        </h1>
+        <p>Celebrate prosperity, luck, and fortune this festive season 🧧</p>
+    </div>
+
+    <div class="form-card">
     <form method="POST">
         <label>Name: </label><br>
         <input type="text" name="username" required><br><br>
@@ -23,9 +192,10 @@ Gungon, Khalif (Back-End)
         <label>Lucky Number (1-10): </label><br>
         <input type="number" name="luckyNumber" min="1" max="1000" required><br><br>
 
-        <input type="submit" value="Calculate">
+        <button type="submit">Calculate</button>
     </form>
-    <?php
+        
+<?php
     // Check if form is submitted
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -101,5 +271,27 @@ Gungon, Khalif (Back-End)
         }
     }
     ?>
+</div>
+
+</div>
+
+<script>
+    // Ripple effect for button
+    const button = document.querySelector("button");
+
+    button.addEventListener("click", function (e) {
+        const circle = document.createElement("span");
+        const diameter = Math.max(this.clientWidth, this.clientHeight);
+        const radius = diameter / 2;
+
+        circle.style.width = circle.style.height = `${diameter}px`;
+        circle.style.left = `${e.clientX - this.offsetLeft - radius}px`;
+        circle.style.top = `${e.clientY - this.offsetTop - radius}px`;
+
+        this.appendChild(circle);
+
+        setTimeout(() => circle.remove(), 600);
+    });
+</script>
 </body>
 </html>
