@@ -215,7 +215,6 @@ Gungon, Khalif (Back-End)
             box-shadow: 0 0 10px gold;
         }
 
-        /* Premium Gold Button */
         button {
             width: 100%;
             padding: 14px;
@@ -306,7 +305,7 @@ Gungon, Khalif (Back-End)
         <label>Lucky Number (1-10): </label><br>
         <input type="number" name="luckyNumber" min="1" max="1000" required><br><br>
 
-        <button type="submit">Calculate</button>
+        <button type="submit">Receive Ang Pao</button>
     </form>
         
 <?php
